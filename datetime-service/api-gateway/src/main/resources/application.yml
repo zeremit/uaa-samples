@@ -1,0 +1,26 @@
+server.port: 8080
+
+resource:
+  ntp:
+    addr: ${ntpResourceUrl:http://localhost:9098/}
+  timezone:
+    addr: ${timezoneResourceUrl:http://localhost:9099/}
+
+oauth:
+  resource: ${uaaUrl}/user
+  token: ${uaaUrl}/oauth/token
+  authorize: ${uaaUrl}/oauth/authorize
+  clientId: ${clientId:datetimeapp}
+  clientSecret: ${clientSecret:datetimeappclientsecret}
+
+security:
+  basic:
+    enabled: false
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+        web:
+          client: DEBUG

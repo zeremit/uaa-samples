@@ -1,0 +1,15 @@
+---
+applications:
+- name: ntp-service
+  memory: 512Mb
+  path: target/ntp-service-1.0-SNAPSHOT.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  stack: cflinuxfs2
+  no-route: false
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    DEBUG: "true"
+    debug: "true"
+    uaaUrl: http://uaa.hdconf.cf-dev.altoros.com
+    clientId: timeapp
+    clientSecret: timeappclientsecret

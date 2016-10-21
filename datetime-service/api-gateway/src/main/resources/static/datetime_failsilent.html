@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<htmL>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-style-type" content="text/css"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        var requestTime = function() {
+//            console.log($("#autoupdate").attr('checked'));
+            if($("#autoupdate").attr('checked')){
+
+            }else {
+                jQuery(function () {
+                    jQuery.ajax({
+                        url: "/datetime/failsilent",
+                        type: "GET",
+                        async: true,
+                        success: function (result) {
+                            jQuery(".timeStyle").text(result.time).css({color: "black"});
+                            jQuery(".dateStyle").text(result.date).css({color: "black"});
+                            jQuery(".timeZoneStyle").text(result.timeZone).css({color: "black"});
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            jQuery(".timeStyle").text(textStatus).css({color: "red"});
+                        }
+                    });
+
+                });
+            };
+        };
+        requestTime();
+        var timerId = setInterval(requestTime, 5000);
+    </script>
+    <style type="text/css">
+        .onoffswitch {
+            position: relative; width: 70px;
+            -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+        }
+        .onoffswitch-checkbox {
+            display: none;
+        }
+        .onoffswitch-label {
+            display: block; overflow: hidden; cursor: pointer;
+            border: 2px solid #999999; border-radius: 20px;
+        }
+        .onoffswitch-inner {
+            display: block; width: 200%; margin-left: -100%;
+            transition: margin 0.3s ease-in 0s;
+        }
+        .onoffswitch-inner:before, .onoffswitch-inner:after {
+            display: block; float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
+            font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+            box-sizing: border-box;
+        }
+        .onoffswitch-inner:before {
+            content: "ON";
+            padding-left: 10px;
+            background-color: #34A7C1; color: #FFFFFF;
+        }
+        .onoffswitch-inner:after {
+            content: "OFF";
+            padding-right: 10px;
+            background-color: #EEEEEE; color: #999999;
+            text-align: right;
+        }
+        .onoffswitch-switch {
+            display: block; width: 22px; margin: 1.5px;
+            background: #FFFFFF;
+            position: absolute; top: 0; bottom: 0;
+            right: 41px;
+            border: 2px solid #999999; border-radius: 20px;
+            transition: all 0.3s ease-in 0s;
+        }
+        .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+            margin-left: 0;
+        }
+        .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+            right: 0px;
+        }
+    </style>
+
+    <style type="text/css">
+        .main {
+            position: fixed;
+            top: 30%;
+            left: 30%;
+            color: #555555;
+            font-size: 24pt;
+        }
+
+        .dateStyle {
+
+        }
+
+        .timeStyle {
+
+        }
+
+        .timeZoneStyle {
+
+        }
+
+        .space {
+            width: 1.5em;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="main">
+    <!--<div class="onoffswitch">-->
+    <!--<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="autoupdate" checked>-->
+    <!--<label class="onoffswitch-label" onselect="alert('ohoho')" for="autoupdate">-->
+    <!--<span class="onoffswitch-inner"></span>-->
+    <!--<span class="onoffswitch-switch"></span>-->
+    <!--</label>-->
+    <!--</div>-->
+    <!--<div>Enable autoupdate</div>-->
+    <table>
+        <tr>
+            <th>Date</th>
+            <th></th>
+            <th>Time</th>
+            <th></th>
+            <th>TimeZone</th>
+        </tr>
+        <tr>
+            <td>
+                <div class="dateStyle"></div>
+            </td>
+            <td class="space"></td>
+            <td>
+                <div class="timeStyle"></div>
+            </td>
+            <td class="space"></td>
+            <td>
+                <div class="timeZoneStyle"></div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

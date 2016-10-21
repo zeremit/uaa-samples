@@ -1,0 +1,13 @@
+---
+applications:
+- name: api-gateway
+  memory: 512Mb
+  path: target/api-gateway-1.0-SNAPSHOT.jar
+  no-route: false
+  env:
+    SPRING_PROFILES_DEFAULT: cloud
+    uaaUrl: http://uaa.hdconf.cf-dev.altoros.com
+    ntpResourceUrl: http://ntp-service.cf-dev.altoros.com
+    timezoneResourceUrl: http://timezone-service.cf-dev.altoros.com
+    clientId: datetimeapp
+    clientSecret: datetimeappclientsecret
