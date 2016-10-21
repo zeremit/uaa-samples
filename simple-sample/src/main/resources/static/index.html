@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<htmL>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css"/>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(function () {
+
+            jQuery.ajax({
+                url: "/name",
+                type: "GET",
+                async: false,
+                success: function (result) {
+                    jQuery(".hello").text("Greetings from Spring Boot, " + result + " !").css({color: "black"});
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                }
+            });
+
+        });
+//        jQuery(function () {
+//
+//            jQuery.ajax({
+//                url: "/logout",
+//                type: "GET",
+//                async: false,
+//                success: function (result) {
+//                    jQuery(".logout").attr("href", result);
+//                },
+//                error: function (jqXHR, textStatus, errorThrown) {
+//
+//                }
+//            });
+//
+//        });
+    </script>
+
+    <style type="text/css">
+        body {
+            margin-top: 60px;
+        }
+        .box {
+            padding: 50px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .main-header {
+            background-color: #161616;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="box col-md-6 col-md-offset-3">
+            <div class="main-header">
+            </div>
+
+            <h1 class="hello"></h1>
+            <h1>Who are you?</h1>
+
+            <!--<form>-->
+                <!--<a class="btn btn-danger logout">Logout</a>-->
+            <!--</form>-->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

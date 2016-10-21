@@ -1,0 +1,13 @@
+---
+applications:
+- name: simple-sample
+  memory: 512M
+  instances: 1
+  path: target/simple-app-0.0.1-SNAPSHOT.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  stack: cflinuxfs2
+  env:
+    name: hdconf
+    uaaUrl: http://uaa.hdconf.cf-dev.altoros.com
+    clientId: simple-sample
+    clientSecret: {protected}

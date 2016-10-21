@@ -1,0 +1,12 @@
+hello: ${name}
+security:
+  oauth2:
+    client:
+      clientId: ${clientId}
+      clientSecret: ${clientSecret}
+      accessTokenUri: ${uaaUrl}/oauth/token
+      userAuthorizationUri: ${uaaUrl}/oauth/authorize
+      logoutUri: ${uaaUrl}/logout.do
+      tokenName: oauth_token
+    resource:
+      userInfoUri: ${uaaUrl}/user
